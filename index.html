@@ -9409,9 +9409,12 @@ addDeferredDialogTag('dialog', editDialog);
     <div>
       <table style="margin-left:auto;margin-right:auto;margin-top:64px;width:100%">
       <tr>
+        <td style="text-align:center">CHATSY - 1) try talkin 2) see the cat 3) try saying a full-caps direction</td>
+        </tr>
+        <tr>
         <td>
          <ul id="messages"></ul>
-         <form action="">
+         <form action="" id="form1">
          <input id="m" autocomplete="off" tabindex="2" /><button>Send</button>
          </form>
        
@@ -9437,46 +9440,70 @@ addDeferredDialogTag('dialog', editDialog);
           return false;
         });
         socket.on('chat message', function(msg){
+          //print to chat log          
           $('#messages').append($('<li>').text(msg));
+          // if we're scrollin shit
           // document.getElementById("messages").scrollTo(0, document.body.scrollHeight);
+          
+          //check if there's more than bitsybox / set cap of messages and delete oldest if so
+          list = document.getElementsByTagName('ul')[0];
+          //  old code if i want a fixed cap   
+          //  var cap = list.childElementCount; 
+          // if (cap >= 24) {  
+          
+          // THIS WORKS BETTER BUT GETS SLIGHTLY WRONG HEIGHT
+            var box = document.querySelector('#messages');
+            var boxbutton = document.querySelector('#form1');
+            var bitsybox = document.querySelector('#game');
+           
+            var listheight = (box.offsetHeight + boxbutton.offsetHeight);
+            var bitsyheight = bitsybox.offsetHeight;
+          
+            if (listheight >= bitsyheight) { 
+               removeMe = document.getElementsByTagName('li')[0];
+               list.removeChild(removeMe); 
+             }
+                    
+          //NOW check for movement commands
+              var str = msg;
+        if (str.indexOf('RIGHT') >= 0) {
+            console.log('chat right');
+            player().x += 1;
+        } else if (str.indexOf('LEFT') >= 0) {
+            console.log('chat left');
+            player().x -= 1;
+        } else if (str.indexOf('UP') >= 0) {
+            console.log('chat up');
+            player().y -= 1;
+        } else if (str.indexOf('DOWN') >= 0) {
+            console.log('chat down');
+            player().y += 1;
+        }  else {
+            console.log('command'); 
+                  
+          // if not, now we do text rendering
+                    
           var newMessage = msg;
           startDialog(newMessage);
           
           function getImage(name, map) {
-	var id = Object.prototype.hasOwnProperty.call(map, name) ? name : Object.keys(map).find(function (e) {
-		return map[e].name === name;
-	});
-	return map[id];
-}
-          
-          
+      	    var id = Object.prototype.hasOwnProperty.call(map, name) ? name : Object.keys(map).find(function (e) {
+		        return map[e].name === name;
+	          });
+        	return map[id];
+          }
+                  
           var a = 'a';
           var mapObj = 'sprite';
           
-	var tgtObj = getImage(a, sprite);
-          if (!tgtObj) {
-		throw new Error('Target "' + a + '" was not the id/name of a ' + mapObj + '.');
-	}
-	dialog[tgtObj.dlg].src = newMessage;
-	scriptInterpreter.Compile(tgtObj.dlg, newMessage);
-          
+	        var tgtObj = getImage(a, sprite);
+            if (!tgtObj) {
+	      	  throw new Error('Target "' + a + '" was not the id/name of a ' + mapObj + '.');
+	          }
+	        dialog[tgtObj.dlg].src = newMessage;
+      	  scriptInterpreter.Compile(tgtObj.dlg, newMessage);
   
-          
-
-//          socket.on('newDial', function(msg){
-//                $('#messages').append($('<li>').text(msg));
-
-//            console.log("msg");
-            
-//	var tgtId = a;
-//	var newDialog = msg;
-
-//	var mapObj = bitsy.sprite;
-//	var tgtObj = getImage(tgtId, mapObj);
-//	dialog[tgtObj.dlg].src = newDialog;
-//	scriptInterpreter.Compile(tgtObj.dlg, newDialog);
-//  });
-          
+        }
         });
       });
     </script>
