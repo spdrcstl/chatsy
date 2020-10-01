@@ -9403,6 +9403,7 @@ addDeferredDialogTag('dialog', editDialog);
 }(window));
     </script>
     
+   
   </head>
   
   <body onload="startExportedGame()">
@@ -9436,7 +9437,7 @@ addDeferredDialogTag('dialog', editDialog);
           socket.emit('chat message', $('#m').val());
           // socket.emit('newDial', $('#dial').val());
           $('#m').val('');
-          $('#dial').val('');
+          // $('#dial').val('');
           return false;
         });
         socket.on('chat message', function(msg){
