@@ -56,7 +56,7 @@ left:5px;
 top:5px;
 width:100px;
 height: 100px;
-background-image: url("ellie_box.png");
+background-image: url("assets/ellie_box.png");
 }
 
 
@@ -71,7 +71,7 @@ height: 100px;
 position:relative;
 width:100px;
 height: 100px;
-background-image: url("tempimages/ellie_hiding.png");
+background-image: url("assets/ellie_hiding.png");
 
 }
 
@@ -79,7 +79,7 @@ background-image: url("tempimages/ellie_hiding.png");
 position:relative;
 width:100px;
 height: 100px;
-background-image: url("tempimages/ellie_pouting.png");
+background-image: url("assets/ellie_pouting.png");
 
 }
 
@@ -89,7 +89,7 @@ left:5px;
 top:5px;
 width:100px;
 height: 100px;
-background-image: url("tempimages/ellie_scared.png");
+background-image: url("assets/ellie_scared.png");
 
 }
 

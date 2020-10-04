@@ -1,5 +1,4 @@
 var app = require('express')();
-var assets = require('./assets');
 var http = require('http').Server(app);
 
 var io = require('socket.io')(http);
@@ -13,6 +12,11 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
+   socket.on('move', function(sprToMove, movex, movey){
+    io.emit('move', sprToMove, movex, movey);
+   });
+  
+  
   
 });
 
@@ -21,7 +25,3 @@ http.listen(port, function(){
 });
 
 // assets code below
-
-var express = require("express");
-app.use("/assets", assets);
-

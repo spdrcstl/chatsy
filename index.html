@@ -3,7 +3,113 @@
   <head>
     <title>Chatsy v01</title>
     
-    <link rel="stylesheet" type="text/css"	href="style.css">
+    <style>
+
+html,body {
+ width: 100%;
+ height: 100%;
+}
+
+
+#container {
+ display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+
+}
+
+#chat {
+ flex: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+#gamecanvas {
+	flex:auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+#avatar: {
+	flex:auto;
+  min-width: 50%;
+  min-height: 50%;
+      }
+
+#about {
+ flex:auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.background {
+
+position:relative;
+width:200px;
+height: 200px;
+background-colour:grey;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH4SURBVHhe7dJBDQAwCAAxTOB5sjGx+zWphM6bhe/EIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLwOwBu6TY0jwrF24AAAAASUVORK5CYII=);
+}
+
+
+#portrait {
+
+position:relative;
+height: 200px;
+width: 200px;
+
+  
+}
+
+.portrait1 {
+position:relative;
+width:200px;
+height: 200px;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP9SURBVHhe7d3BbVRBEEXRgRzIyiuSIQVIhhUB8qUeWciAbYEf9Ks+Z8Msqf7X9ZtZ4Hefbx9u8Nbe3/+ENyUsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwi/QOBln75+u396yZePD/dPxxPWL7y+pOed3Jmw7t4qpt85LbLTw0r39LNDCjs3rH+f1I/G53ViWP83qSemFnZQWFv19MS8vE75Hmvnqi6b//X+wPyN1fXMxqyu4RurbhOMWV1jN1b7E2pfXTM31oCf+/YRBoY15m1SPci0sMZUtfSOMyqsYVUtpUPNCWtkVUvjaEPCGlzVUjfghLDGV7V0jVkf1iFVLUXDdod1VFVLy8hzLu9spTisA9fVUjF4a1jHVrXsP75XIRGVYR2+rpbND8HGIqIvLOvq0c5HYWMRIaxu2y6tsrC8B1vYWEQIq96eW7wpLO/BIjYWEcIiQlhE1ITlgvWMDQ/HxiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWETUhDX+d4T8jQ0Px8YiQlhECIsIYRHRFJb7+y/teSw2FhHCIqIsLG/DJ7Y9EBuLiL6wLK1HOx+FjUVEZViW1mXzQ7CxiGgN6/Cltf/4xRvr2LYqBvcqJKI7rAOXVsvI9RvrqLaKhp3wKjykra4xh9yxxrdVN+Ccy/vgthpHmxPWZWRbpUONCusyrK3ecaaFdRnTVvUgA8O6DGirfYR3n28f7h8navwvcWds3Jkb61HdQ5pR1WX4xnpUsbrGVHU5JazLzm1NSmqxsf6zeUktw+9Yy867qvGfF68xP6z9n9zItoaH1fLM5rU1OayupzWsrSPuWPx7Y8NqXACTltbMsHqf0Ji2BobV/mxmtOWOtaMBbU0La8yrpN2osCZV1T6LVyERc8Ka9xKsnmhIWFOvVr1zeRUSMSGsqetqKZ3OxiKiPqzZ62ppnNHGIkJYHeqWVndYJ7wHS9lYRBSHddq66prXxiJCWES0hnXmtb1oahuLiMqwTv6WoWV2G4sIYREhLCL6wjr5grVUnICNRYSwiBAWEcIioiwsN/dl/3OwsYgQFhHCIkJYRAiLCGER0RSW7xp+tPlp2FhECIsIYREhLCKERYSwiBAWEcIiQlhECIsIYREhLCKERYSwiBAWEcIioimsLx8f7p/Y/jRsLCKERYSwiBAWEcIiQlhElIXlG4dl/3OwsYgQFhHCIkJYRPSF5f5ecQI2FhHCIkJYRFSGdfI1q2V2G4uI1rDOXFpFU9tYRAiLgNvtOxDf8DkYbWPQAAAAAElFTkSuQmCC);
+
+}
+
+.portrait2 {
+position:relative;
+width:200px;
+height: 200px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP8SURBVHhe7d1BbhRBEETRgSMgcVaWiB1cljPQUo0sZMC2wGEqst7bMEuy+ju7mAV+9/X28Qav7f39T3hVwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFhLCI8AsEnvfp84f7p+d8+/L9/ul4wvqNl5f0tJM7E9bda8X0J6dFdnpY6Z5+dUhh54b19kn9bHxeJ4b1f5N6ZGphB4W1VU+PzMvrlO+xdq7qsvlf7y/M31hdz2zM6hq+seo2wZjVNXZjtT+h9tU1c2MN+LlvH2FgWGPeJtWDTAtrTFVL7zijwhpW1VI61JywRla1NI42JKzBVS11A04Ia3xVS9eY9WEdUtVSNGx3WEdVtbSMPOfyzlaKwzpwXS0Vg7eGdWxVy/7jexUSURnW4etq2fwQbCwi+sKyrh7sfBQ2FhHC6rbt0ioLy3uwhY1FhLDq7bnFm8LyHixiYxEhLCKERURNWC5YT9jwcGwsIoRFhLCIEBYRwiJCWEQIiwhhESEsIoRFRE1Y439HyL/Y8HBsLCKERYSwiBAWEU1hub//1p7HYmMRISwiysLyNnxk2wOxsYjoC8vSerDzUdhYRFSGZWldNj8EG4uI1rAOX1r7j1+8sY5tq2Jwr0IiusM6cGm1jFy/sY5qq2jYCa/CQ9rqGnPIHWt8W3UDzrm8D26rcbQ5YV1GtlU61KiwLsPa6h1nWliXMW1VDzIwrMuAttpHePf19vH+caLG/xJ3xsadubEe1D2kGVVdhm+sBxWra0xVl1PCuuzc1qSkFhvrP5uX1DL8jrXsvKsa/3nxEvPD2v/JjWxreFgtz2xeW5PD6npaw9o64o7F2xsbVuMCmLS0ZobV+4TGtDUwrPZnM6Mtd6wdDWhrWlhjXiXtRoU1qar2WbwKiZgT1ryXYPVEQ8KaerXqncurkIgJYU1dV0vpdDYWEfVhzV5XS+OMNhYRwupQt7S6wzrhPVjKxiKiOKzT1lXXvDYWEcIiojWsM6/tRVPbWERUhnXytwwts9tYRAiLCGER0RfWyRespeIEbCwihEWEsIgQFhFlYbm5L/ufg41FhLCIEBYRwiJCWEQIi4imsHzX8LPNT8PGIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhFNYX378v3+ie1Pw8YiQlhECIsIYREhLCKERURZWL5xWPY/BxuLCGERISwihEVEX1ju7xUnYGMRISwihEVEZVgnX7NaZrexiGgN68ylVTS1jUWEsAi43X4AsBfWGS+et34AAAAASUVORK5CYII=);
+
+}
+
+.portrait3 {
+position:relative;
+width:200px;
+  height: 200px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQASURBVHhe7d3NbVRBEIXRgRyIhTCcBbEQA1kQhrPiST2ykPmxBb7Qt/qcDbOk+n2u18wCv/t8+3CDt/b+/ie8KWERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRPgFAi/78vXj/dNLPj083j8dT1g/8fqSfu/kzoR191Yx/cppkZ0eVrqnHx1S2Llh/fukvjc+rxPD+r9JPTO1sIPC2qqnZ+bldcr3WDtXddn8r/cH5m+srmc2ZnUN31h1m2DM6hq7sdqfUPvqmrmxBvzct48wMKwxb5PqQaaFNaaqpXecUWENq2opHWpOWCOrWhpHGxLW4KqWugEnhDW+qqVrzPqwDqlqKRq2O6yjqlpaRp5zeWcrxWEduK6WisFbwzq2qmX/8b0KiagM6/B1tWx+CDYWEX1hWVdPdj4KG4sIYXXbdmmVheU92MLGIkJY9fbc4k1heQ8WsbGIEBYRwiKiJiwXrN/Y8HBsLCKERYSwiBAWEcIiQlhECIsIYREhLCKERURNWON/R8jf2PBwbCwihEWEsIgQFhFNYbm//9Sex2JjESEsIsrC8jZ8ZtsDsbGI6AvL0nqy81HYWERUhmVpXTY/BBuLiNawDl9a+49fvLGObaticK9CIrrDOnBptYxcv7GOaqto2AmvwkPa6hpzyB1rfFt1A865vA9uq3G0OWFdRrZVOtSosC7D2uodZ1pYlzFtVQ8yMKzLgLbaR3j3+fbh/nGixv8Sd8bGnbmxntQ9pBlVXYZvrCcVq2tMVZdTwrrs3NakpBYb6z+bl9Qy/I617LyrGv958Rrzw9r/yY1sa3hYLc9sXluTw+p6WsPaOuKOxb83NqzGBTBpac0Mq/cJjWlrYFjtz2ZGW+5YOxrQ1rSwxrxK2o0Ka1JV7bN4FRIxJ6x5L8HqiYaENfVq1TuXVyERE8Kauq6W0ulsLCLqw5q9rpbGGW0sIoTVoW5pdYd1wnuwlI1FRHFYp62rrnltLCKERURrWGde24umtrGIqAzr5G8ZWma3sYgQFhHCIqIvrJMvWEvFCdhYRAiLCGERISwiysJyc1/2PwcbiwhhESEsIoRFhLCIEBYRTWH5ruF7m5+GjUWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwimsL69PB4/8T2p2FjESEsIoRFhLCIEBYRwiKiLCzfOCz7n4ONRYSwiBAWEcIioi8s9/eKE7CxiBAWEcIiojKsk69ZLbPbWES0hnXm0iqa2sYiQlgE3G7fAKql5Vk42yEVAAAAAElFTkSuQmCC);
+
+}
+
+
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font: 24px Helvetica, Arial; color:white;background:black;}
+
+form { background: #000; padding: 3px; position: relative; bottom: 0; width: 100%;  font-size: 12px;}
+
+form input { border: 0; padding: 10px; width: 90%; margin-right: .5%;  font-size: 12px; align-self: baseline;}
+
+form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; font-size: 14px; align-self: baseline;}
+
+table {overflow:scroll; table-layout:fixed; width:80%; padding:24px}
+
+td {height:80%; overflow:scroll;}
+
+#messages { list-style-type: none; margin: 0; padding: 0; }
+
+#messages li { padding: 5px 10px; }
+
+#messages li:nth-child(odd) { background: #303030; }
+
+#messages { margin-bottom: 40px }
+    
+    </style>
     
     <script type="text/bitsyGameData" id="exportedGameData">
 
@@ -122,7 +228,6 @@ html {
 
 #game {
 	background:black;
-    
 	margin:auto;
 	display:block;
 }
@@ -4371,6 +4476,7 @@ function renderImage(drawing, paletteId) {
 	// create array of ImageData frames
 	imageStore.render[drwId][pal][colStr] = [];
 
+  
 	for (var i = 0; i < imgSrc.length; i++) {
 		var frameSrc = imgSrc[i];
 		var frameData = imageDataFromImageSource( frameSrc, pal, col );
@@ -4379,7 +4485,7 @@ function renderImage(drawing, paletteId) {
 }
 
 function imageDataFromImageSource(imageSource, pal, col) {
-	//console.log(imageSource);
+	// console.log(imageSource);
 
 	var img = context.createImageData(tilesize*scale,tilesize*scale);
 
@@ -5280,24 +5386,46 @@ var InputManager = function() {
 }
 var input = null;
 
+ 
 function movePlayer(direction) {
 	if (player().room == null || !Object.keys(room).includes(player().room)) {
 		return; // player room is missing or invalid.. can't move them!
 	}
 
 	var spr = null;
+  
 
 	if ( curPlayerDirection == Direction.Left && !(spr = getSpriteLeft()) && !isWallLeft()) {
-		player().x -= 1;
+		// player().x -= 1;
+    var sprToMove = playerId;
+    var movex = player().x -= 1;
+    var movey = player().y;
+    console.log(sprToMove, movex, movey);
+    socket.emit ('move', sprToMove, movex, movey);
 	}
 	else if ( curPlayerDirection == Direction.Right && !(spr = getSpriteRight()) && !isWallRight()) {
-		player().x += 1;
+		// player().x += 1;
+    var sprToMove = playerId;
+    var movex = player().x += 1;
+    var movey = player().y;
+    console.log(sprToMove, movex, movey);
+    socket.emit ('move', sprToMove, movex, movey);
 	}
 	else if ( curPlayerDirection == Direction.Up && !(spr = getSpriteUp()) && !isWallUp()) {
-		player().y -= 1;
+		// player().y -= 1;
+    var sprToMove = playerId;
+    var movex = player().x;
+    var movey = player().y -=1 ;
+    console.log(sprToMove, movex, movey);
+    socket.emit ('move', sprToMove, movex, movey);
 	}
 	else if ( curPlayerDirection == Direction.Down && !(spr = getSpriteDown()) && !isWallDown()) {
-		player().y += 1;
+		// player().y += 1;
+    var sprToMove = playerId;
+    var movex = player().x;
+    var movey = player().y +=1 ;
+    console.log(sprToMove, movex, movey);
+    socket.emit ('move', sprToMove, movex, movey);
 	}
 	
 	var ext = getExit( player().room, player().x, player().y );
@@ -6454,7 +6582,9 @@ function drawTile(img,x,y,context) {
 }
 
 function drawSprite(img,x,y,context) { //this may differ later (or not haha)
-	drawTile(img,x,y,context);
+	// var sprite2draw = document.getElementById('#newav');
+  // drawTile(sprite2draw,x,y,context);
+  drawTile(img,x,y,context);
 }
 
 function drawItem(img,x,y,context) {
@@ -6517,7 +6647,29 @@ function drawRoom(room,context,frameIndex) { // context & frameIndex are optiona
 	for (id in sprite) {
 		var spr = sprite[id];
 		if (spr.room === room.id) {
-			drawSprite( getSpriteImage(spr,paletteId,frameIndex), spr.x, spr.y, context );
+      
+      if (spr.id === playerId){
+        
+         var element = document.getElementById("newav");
+ 
+    //If it isn't "undefined" and it isn't "null", then it exists.
+    if(typeof(element) != 'undefined' && element != null){
+           
+        var img = document.getElementById("newav");
+      
+       drawSprite( img, spr.x, spr.y, context );
+      
+      
+    } else{
+       drawSprite( getSpriteImage(spr,paletteId,frameIndex), spr.x, spr.y, context );
+    }
+        
+      }
+      
+      else {
+      
+ 			drawSprite( getSpriteImage(spr,paletteId,frameIndex), spr.x, spr.y, context );
+      }
 		}
 	}
 }
@@ -6528,7 +6680,7 @@ function getTileImage(t,palId,frameIndex) {
 }
 
 function getSpriteImage(s,palId,frameIndex) {
-	return renderer.GetImage(s,palId,frameIndex);
+  return renderer.GetImage(s,palId,frameIndex);
 }
 
 function getItemImage(itm,palId,frameIndex) {
@@ -9393,26 +9545,36 @@ addDeferredDialogTag('dialog', editDialog);
    
   </head>
   
-  <body onload="startExportedGame()">
-    <div id="upper">
-      <div id="avatar">
+  <body onload="startExportedGame();initav()">
+    <div id="container">
+      <div id="avatar" style="background-color:grey" >
       		<div id="background" class="background">
       			<div id="portrait"></div>
       		</div>
       	
       
       <input type="button" value="NEXT" id="nextPortrait" onclick="nextport()">
+        <input type="button" value="SET" id="setAvatar" onclick="setAvatar()">
 
       	</div>
-
-      
-
-
-
+      <div id="currentAvatar" style="background-color:grey" >
+      		<div id="background2" class="background">
+      	</div>
+        <div>
+          
+        </div>
+        CURRENT
       </div>
-      <div id="about"> SPDRCSTL'S CHATSY ABOMINATION</div>
-    </div>
-    <div id="lower">
+      
+            
+      <div id="about" style="background-color:#aaaaaa"> SPDRCSTL'S CHATSY ABOMINATION
+      
+      <input type="button" value="ENGAGE PC1" id="player1" onclick="setPlayer1()">
+      <input type="button" value="ENGAGE PC2" id="player2" onclick="setPlayer2()">
+      
+      </div>
+    
+    
       <div id="chat">
          
          <ul id="messages">
@@ -9422,7 +9584,9 @@ addDeferredDialogTag('dialog', editDialog);
          <li>...</li>
          <li>...</li>
          <li>...</li>
-       
+         <li>...</li>
+         <li>...</li>
+         <li>...</li>
          <li>...</li>
          <li>...</li>
          <li>...</li>
@@ -9442,8 +9606,10 @@ addDeferredDialogTag('dialog', editDialog);
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     
     <script>
+      var socket = io();
+      
       $(function () {
-        var socket = io();
+        
         $('form').submit(function(){
           socket.emit('chat message', $('#m').val());
           // socket.emit('newDial', $('#dial').val());
@@ -9517,46 +9683,105 @@ addDeferredDialogTag('dialog', editDialog);
   
         }
         });
+        
+        socket.on('move', function(sprToMove, movex, movey){
+          // console.log("receieved", sprToMove, moveCmd);
+        var target = sprite[sprToMove];
+          console.log(target, movex, movey);
+          target.x = movex;
+          target.y = movey;
+        });
+        
+          
+          
+          
+          
+    
+                  
       });
     </script>
+    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
+    
     <script>
 var state={portvar:0};
 
 function nextport()
 {
 	console.log("inside function nextport");
-	console.log(state.portvar);
+	
 	var port=document.getElementById("portrait");
 	
 	if (state.portvar===0){
-    port.setAttribute("class","ellie1");
-    	state.port++;
-    	console.log(state.portvar);
+   	port.setAttribute("class","portrait1");
+    		state.portvar++;
+    		console.log(state.portvar);
+  
     }
     else
-    	if(state.port===1){
-    		port.setAttribute("class","ellie2");
+    	if(state.portvar===1){
+    		port.setAttribute("class","portrait2");
     		state.portvar++;
-    		consolelog(state.portvar);
+    		console.log(state.portvar);
     	}
     else
     	if(state.portvar===2){
-    		port.setAttribute("class","ellie3");
+    		port.setAttribute("class","portrait3");
     		state.portvar=0;
+        console.log(state.portvar);
     	}
 }
-
-window.onload=initav;
 
 function initav()
 {
 	console.log("window has loaded");
-	state.portvar=0;
+	state.portvar=1;
 }
-
+      
     </script>
+ 
+    <script>
+      function setAvatar()
+{
   
+  var element = document.getElementById("newav");
+ 
+    //If it isn't "undefined" and it isn't "null", then it exists.
+    if(typeof(element) != 'undefined' && element != null){
+        element.parentNode.removeChild(element);
+    } else{
+        console.log("no av set");
+    }
+  
+  html2canvas(document.querySelector("#background")).then(canvas => {
+    
+    document.getElementById("background2").appendChild(canvas).setAttribute("id", "newav");
+});        
+    }
+    </script>
+    
+  <script>
+    function setPlayer1(){
+      
+      var targetId = "A"
+      playerId = targetId;      
+    };
+    
+    function setPlayer2(){
+      
+      var targetId = "a"
+      playerId = targetId;      
+    };
+    
+    
+    </script>
+    
+    
+    
+    
+    
+    
     
   </body>
 </html>
