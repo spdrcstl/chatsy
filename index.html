@@ -32,15 +32,29 @@ html,body {
 
 #avatar: {
 	flex:auto;
-  min-width: 50%;
+  
   min-height: 50%;
       }
 
 #about {
  flex:auto;
-  min-width: 50%;
+  
   min-height: 50%;
 }
+      
+      #playerscol {
+ flex:auto;
+        min-height: 50%;
+  
+  
+}
+    
+
+      
+      #playerphotos {
+        flex:auto;
+        flex-basis:25%;
+      }
 
 .background {
 
@@ -85,6 +99,9 @@ width:200px;
 
 }
 
+      #playerimages {
+        position:relative;       
+      }
 
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -163,7 +180,9 @@ SPR A
 10111101
 00100100
 00100100
-POS 0 4,4
+POS 0 3,4
+NAME player1
+DLG player1d
 
 SPR a
 00000000
@@ -174,9 +193,87 @@ SPR a
 01111100
 00111100
 00100100
-NAME cat
-DLG 0
-POS 0 7,11
+NAME player2
+DLG player2d
+POS 0 3,5
+
+SPR b
+00000000
+00000000
+01010001
+01110001
+01110010
+01111100
+00111100
+00100100
+NAME player3
+DLG player3d
+POS 0 3,6
+
+SPR c
+00000000
+00000000
+01010001
+01110001
+01110010
+01111100
+00111100
+00100100
+NAME player4
+DLG player4d
+POS 0 3,7
+
+SPR d
+00000000
+00000000
+01010001
+01110001
+01110010
+01111100
+00111100
+00100100
+NAME player5
+DLG player5d
+POS 0 3,8
+
+SPR e
+00000000
+00000000
+01010001
+01110001
+01110010
+01111100
+00111100
+00100100
+NAME player6
+DLG player6d
+POS 0 3,9
+
+SPR f
+00000000
+00000000
+01010001
+01110001
+01110010
+01111100
+00111100
+00100100
+NAME player7
+DLG player7d
+POS 0 3,10
+
+SPR g
+00000000
+00000000
+01010001
+01110001
+01110010
+01111100
+00111100
+00100100
+NAME player8
+DLG player8d
+POS 0 3,11
 
 ITM 0
 00000000
@@ -213,6 +310,42 @@ NAME tea dialog
 DLG 2
 A key! {wvy}What does it open?{wvy}
 NAME key dialog
+
+DLG 3
+person default dialogue
+NAME person dialog
+
+DLG player1d
+player 1 initial dialogue
+NAME player 1 dialog
+
+DLG player2d
+player 2 initial dialogue
+NAME player 2 dialog
+
+DLG player3d
+player 3 initial dialogue
+NAME player 3 dialog
+
+DLG player4d
+player 4 initial dialogue
+NAME player 4 dialog
+
+DLG player5d
+player 5 initial dialogue
+NAME player 5 dialog
+
+DLG player6d
+player 6 initial dialogue
+NAME player 6 dialog
+
+DLG player7d
+player 7 initial dialogue
+NAME player 7 dialog
+
+DLG player8d
+player 8 initial dialogue
+NAME player 8 dialog
 
 VAR a
 42
@@ -9557,7 +9690,7 @@ addDeferredDialogTag('dialog', editDialog);
         <input type="button" value="SET" id="setAvatar" onclick="setAvatar()">
 
       	</div>
-      <div id="currentAvatar" style="background-color:grey" >
+       <div id="currentAvatar" style="background-color:grey" >
       		<div id="background2" class="background">
       	</div>
         <div>
@@ -9565,14 +9698,61 @@ addDeferredDialogTag('dialog', editDialog);
         </div>
         CURRENT
       </div>
+       
       
             
       <div id="about" style="background-color:#aaaaaa"> SPDRCSTL'S CHATSY ABOMINATION
-      
-      <input type="button" value="ENGAGE PC1" id="player1" onclick="setPlayer1()">
-      <input type="button" value="ENGAGE PC2" id="player2" onclick="setPlayer2()">
-      
       </div>
+      
+       <div class="playerscol" style="background-color:#bbbbbb">
+       <div id="player1">
+	 <div></div><br>
+      	 <input type="button" class="playerimages" value="ENGAGE PC1" onclick="setPlayer1()">
+         <br><span id="player1active">ON</span><br>
+	</div>
+	<div id="player2">
+	 <div></div><br>
+         <input type="button" class="playerimages" value="ENGAGE PC2" onclick="setPlayer2()">
+        <br><span id="player2active">OFF</span>
+       </div>
+   </div>
+      <div class="playerscol" style="background-color:#cccccc">
+       <div id="player3">
+	 <div></div><br>
+      <input type="button" class="playerimages" value="ENGAGE PC3" onclick="setPlayer3()">
+        <br><span id="player3active">OFF</span><br>
+       </div>
+	<div id="player4">
+  	<div></div><br>
+      <input type="button" class="playerimages" value="ENGAGE PC4"  onclick="setPlayer4()">
+        <br><span id="player4active">OFF</span>
+     </div>
+      </div>
+        <div class="playerscol" style="background-color:#bbbbbb">
+	<div id="player5">
+	<div></div><br>
+      <input type="button" class="playerimages" value="ENGAGE PC5"  onclick="setPlayer5()"><br>
+          <span id="player5active">OFF</span><br>
+</div>
+<div id="player6">
+      <div></div><br>
+      <input type="button" class="playerimages" value="ENGAGE PC6"  onclick="setPlayer6()">
+          <br><span id="player6active">OFF</span>
+</div>
+      </div>
+          <div class="playerscol" style="background-color:#cccccc">
+<div id="player7"> 	
+<div></div><br>
+      <input type="button" class="playerimages" value="ENGAGE PC7"  onclick="setPlayer7()">
+            <br><span id="player7active">OFF</span><br>
+</div>
+<div id="player8">
+      <div></div><br>
+      <input type="button" class="playerimages" value="ENGAGE PC8" onclick="setPlayer8()">
+            <br><span id="player8active">OFF</span>
+</div>
+      </div>
+      
     
     
       <div id="chat">
@@ -9607,6 +9787,7 @@ addDeferredDialogTag('dialog', editDialog);
     
     <script>
       var socket = io();
+      var curPlayerIs = 1;
       
       $(function () {
         
@@ -9671,18 +9852,18 @@ addDeferredDialogTag('dialog', editDialog);
         	return map[id];
           }
                   
-          var a = 'a';
           var mapObj = 'sprite';
-          
-	        var tgtObj = getImage(a, sprite);
+          var tgtObj = getImage(playerId, sprite);
             if (!tgtObj) {
-	      	  throw new Error('Target "' + a + '" was not the id/name of a ' + mapObj + '.');
+	      	  throw new Error('Target "' + playerId + '" was not the id/name of a ' + mapObj + '.');
 	          }
 	        dialog[tgtObj.dlg].src = newMessage;
       	  scriptInterpreter.Compile(tgtObj.dlg, newMessage);
   
         }
         });
+        
+        // sprite movement
         
         socket.on('move', function(sprToMove, movex, movey){
           // console.log("receieved", sprToMove, moveCmd);
@@ -9692,12 +9873,7 @@ addDeferredDialogTag('dialog', editDialog);
           target.y = movey;
         });
         
-          
-          
-          
-          
-    
-                  
+        
       });
     </script>
     
@@ -9742,10 +9918,13 @@ function initav()
     </script>
  
     <script>
-      function setAvatar()
+    function setAvatar()
 {
-  
-  var element = document.getElementById("newav");
+ 
+  var targetContainer = "player" + curPlayerIs;
+  var targetAv = "player" + curPlayerIs + "custom";
+ 
+  var element = document.getElementById(targetAv);
  
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(typeof(element) != 'undefined' && element != null){
@@ -9756,24 +9935,72 @@ function initav()
   
   html2canvas(document.querySelector("#background")).then(canvas => {
     
-    document.getElementById("background2").appendChild(canvas).setAttribute("id", "newav");
+    document.getElementById(targetContainer).appendChild(canvas).setAttribute("id", targetAv);
 });        
     }
+      
+      
+     
     </script>
     
   <script>
+    // set player functions. probably a neater way of doing this.
+    
     function setPlayer1(){
       
       var targetId = "A"
-      playerId = targetId;      
+      playerId = targetId;
+      curPlayerIs = 1;
     };
     
     function setPlayer2(){
       
       var targetId = "a"
-      playerId = targetId;      
+      playerId = targetId;  
+      curPlayerIs = 2;
     };
     
+     function setPlayer3(){
+      
+      var targetId = "b"
+      playerId = targetId;      
+       curPlayerIs = 3;
+    };
+    
+     function setPlayer4(){
+      
+      var targetId = "c"
+      playerId = targetId;  
+       curPlayerIs = 4;
+    };
+    
+    function setPlayer5(){
+      
+      var targetId = "d"
+      playerId = targetId; 
+      curPlayerIs = 5;
+    };
+    
+    function setPlayer6(){
+      
+      var targetId = "e"
+      playerId = targetId;      
+      curPlayerIs = 6;
+    };
+    
+     function setPlayer7(){
+      
+      var targetId = "f"
+      playerId = targetId;   
+       curPlayerIs = 7;
+    };
+    
+     function setPlayer8(){
+      
+      var targetId = "g"
+      playerId = targetId;  
+       curPlayerIs = 8;
+    };
     
     </script>
     
