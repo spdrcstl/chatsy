@@ -5541,7 +5541,7 @@ function movePlayer(direction) {
     var sprToMove = playerId;
     var movex = player().x += 1;
     var movey = player().y;
-    console.log(sprToMove, movex, movey);
+    // console.log(sprToMove, movex, movey);
     socket.emit ('move', sprToMove, movex, movey);
 	}
 	else if ( curPlayerDirection == Direction.Up && !(spr = getSpriteUp()) && !isWallUp()) {
@@ -6781,14 +6781,16 @@ function drawRoom(room,context,frameIndex) { // context & frameIndex are optiona
 		var spr = sprite[id];
 		if (spr.room === room.id) {
       
-      if (spr.id === playerId){
-        
-         var element = document.getElementById("newav");
+     //  if (spr.id === playerId){
+      
+        var imgSource = 'player' + spr.id + 'custom';
+      // console.log(imgSource);
+         var element = document.getElementById(imgSource);
  
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(typeof(element) != 'undefined' && element != null){
            
-        var img = document.getElementById("newav");
+        var img = document.getElementById(imgSource);
       
        drawSprite( img, spr.x, spr.y, context );
       
@@ -6799,12 +6801,12 @@ function drawRoom(room,context,frameIndex) { // context & frameIndex are optiona
         
       }
       
-      else {
+      // else {
       
- 			drawSprite( getSpriteImage(spr,paletteId,frameIndex), spr.x, spr.y, context );
-      }
+ 			// drawSprite( getSpriteImage(spr,paletteId,frameIndex), spr.x, spr.y, context );
+      
 		}
-	}
+	
 }
 
 // TODO : remove these get*Image methods
@@ -9678,7 +9680,7 @@ addDeferredDialogTag('dialog', editDialog);
    
   </head>
   
-  <body onload="startExportedGame();initav()">
+  <body onload="startExportedGame();initav();">
     <div id="container">
       <div id="avatar" style="background-color:grey" >
       		<div id="background" class="background">
@@ -9704,50 +9706,52 @@ addDeferredDialogTag('dialog', editDialog);
       <div id="about" style="background-color:#aaaaaa"> SPDRCSTL'S CHATSY ABOMINATION
       </div>
       
-       <div class="playerscol" style="background-color:#bbbbbb">
+      
+      
+       <div class="playerscol" style="background-color:#bbbbbb"> 
        <div id="player1">
-	 <div></div><br>
+         <canvas id="playerAcustom" width="50px" height="50px"></canvas><br>
       	 <input type="button" class="playerimages" value="ENGAGE PC1" onclick="setPlayer1()">
          <br><span id="player1active">ON</span><br>
 	</div>
 	<div id="player2">
-	 <div></div><br>
+	 <canvas id="playeracustom" width="50px" height="50px"></canvas><br>
          <input type="button" class="playerimages" value="ENGAGE PC2" onclick="setPlayer2()">
         <br><span id="player2active">OFF</span>
        </div>
    </div>
       <div class="playerscol" style="background-color:#cccccc">
        <div id="player3">
-	 <div></div><br>
+	 <canvas id="playerbcustom" width="50px" height="50px"></canvas><br>
       <input type="button" class="playerimages" value="ENGAGE PC3" onclick="setPlayer3()">
         <br><span id="player3active">OFF</span><br>
        </div>
 	<div id="player4">
-  	<div></div><br>
+  	<canvas id="playerccustom" width="50px" height="50px"></canvas><br>
       <input type="button" class="playerimages" value="ENGAGE PC4"  onclick="setPlayer4()">
         <br><span id="player4active">OFF</span>
      </div>
       </div>
         <div class="playerscol" style="background-color:#bbbbbb">
 	<div id="player5">
-	<div></div><br>
+<canvas id="playerdcustom" width="50px" height="50px"></canvas><br>
       <input type="button" class="playerimages" value="ENGAGE PC5"  onclick="setPlayer5()"><br>
           <span id="player5active">OFF</span><br>
 </div>
 <div id="player6">
-      <div></div><br>
+     <canvas id="playerecustom" width="50px" height="50px"></canvas><br>
       <input type="button" class="playerimages" value="ENGAGE PC6"  onclick="setPlayer6()">
           <br><span id="player6active">OFF</span>
 </div>
       </div>
           <div class="playerscol" style="background-color:#cccccc">
 <div id="player7"> 	
-<div></div><br>
+<canvas id="playerfcustom" width="50px" height="50px"></canvas><br>
       <input type="button" class="playerimages" value="ENGAGE PC7"  onclick="setPlayer7()">
             <br><span id="player7active">OFF</span><br>
 </div>
 <div id="player8">
-      <div></div><br>
+      <canvas id="playergcustom" width="50px" height="50px"></canvas><br>
       <input type="button" class="playerimages" value="ENGAGE PC8" onclick="setPlayer8()">
             <br><span id="player8active">OFF</span>
 </div>
@@ -9787,7 +9791,7 @@ addDeferredDialogTag('dialog', editDialog);
     
     <script>
       var socket = io();
-      var curPlayerIs = 1;
+      var curPlayerIs = 'A';
       
       $(function () {
         
@@ -9866,11 +9870,32 @@ addDeferredDialogTag('dialog', editDialog);
         // sprite movement
         
         socket.on('move', function(sprToMove, movex, movey){
-          // console.log("receieved", sprToMove, moveCmd);
+//           console.log("receieved", sprToMove, movex, movey);
         var target = sprite[sprToMove];
-          console.log(target, movex, movey);
+        //  console.log(target);
           target.x = movex;
           target.y = movey;
+        });
+    
+        // draw avatar
+        
+        socket.on('avUpdate', function(targetAv, dataURL){
+          
+          console.log("updating avatar" + targetAv);
+          
+          var img = new Image;
+          img.src = dataURL;
+          
+          var myCanvas = document.getElementById(targetAv);
+          var ctx = myCanvas.getContext('2d');
+          var img = new Image;
+          img.onload = function(){
+          ctx.drawImage(img, 0, 0, img.width, img.height,     // source rectangle
+                   0, 0, 50, 50); // Or at whatever offset you like
+          };
+          img.src = dataURL;
+                
+          
         });
         
         
@@ -9921,10 +9946,11 @@ function initav()
     function setAvatar()
 {
  
-  var targetContainer = "player" + curPlayerIs;
-  var targetAv = "player" + curPlayerIs + "custom";
- 
-  var element = document.getElementById(targetAv);
+// draws the avatar to the temp canvas
+
+  
+  
+  var element = document.getElementById('tempAv');
  
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(typeof(element) != 'undefined' && element != null){
@@ -9935,8 +9961,28 @@ function initav()
   
   html2canvas(document.querySelector("#background")).then(canvas => {
     
-    document.getElementById(targetContainer).appendChild(canvas).setAttribute("id", targetAv);
-});        
+    document.getElementById('background2').appendChild(canvas).setAttribute("id", 'tempAv');
+});      
+  
+   // now copy across server to canvas minis
+  // TODO: actually make the canvas minis you fuck
+  
+   
+   setTimeout(function(targetAv){
+     
+  var targetAv = "player" + curPlayerIs + "custom";
+
+     
+  var src = document.getElementById('tempAv');
+  console.log(targetAv)
+  var dataURL = src.toDataURL();
+     
+      socket.emit ('avUpdate', targetAv, dataURL);
+
+        
+     
+   }, 2000);
+  
     }
       
       
@@ -9944,65 +9990,132 @@ function initav()
     </script>
     
   <script>
-    // set player functions. probably a neater way of doing this.
+    // set local player functions. probably a neater way of doing this.
     
     function setPlayer1(){
       
       var targetId = "A"
       playerId = targetId;
-      curPlayerIs = 1;
+      curPlayerIs = 'A';
     };
     
     function setPlayer2(){
       
       var targetId = "a"
       playerId = targetId;  
-      curPlayerIs = 2;
+     curPlayerIs = 'a';
     };
     
      function setPlayer3(){
       
       var targetId = "b"
       playerId = targetId;      
-       curPlayerIs = 3;
+      curPlayerIs = 'b';
     };
     
      function setPlayer4(){
       
       var targetId = "c"
       playerId = targetId;  
-       curPlayerIs = 4;
+       curPlayerIs = 'c';
     };
     
     function setPlayer5(){
       
       var targetId = "d"
       playerId = targetId; 
-      curPlayerIs = 5;
+       curPlayerIs = 'd';
     };
     
     function setPlayer6(){
       
       var targetId = "e"
       playerId = targetId;      
-      curPlayerIs = 6;
+      curPlayerIs = 'e';
     };
     
      function setPlayer7(){
       
       var targetId = "f"
       playerId = targetId;   
-       curPlayerIs = 7;
+        curPlayerIs = 'f';
     };
     
      function setPlayer8(){
       
       var targetId = "g"
       playerId = targetId;  
-       curPlayerIs = 8;
+        curPlayerIs = 'g';
     };
     
     </script>
+    
+    <script>
+ 
+    let sprites = [];
+    const spriteOrigin = new Map();
+      
+      setTimeout(function(){ 
+        
+        sprites = [
+          sprite['A'],
+          sprite['a'],
+          sprite['b'],
+          sprite['c'],
+          sprite['d'],
+          sprite['e'],
+          sprite['f'],
+          sprite['g'],
+        ];
+      
+      spriteOrigin.set(sprite["A"], 4);
+      spriteOrigin.set(sprite["a"], 5);
+      spriteOrigin.set(sprite["b"], 6);
+      spriteOrigin.set(sprite["c"], 7);
+      spriteOrigin.set(sprite["d"], 8);
+      spriteOrigin.set(sprite["e"], 9);
+      spriteOrigin.set(sprite["f"], 10);
+      spriteOrigin.set(sprite["g"], 11);
+        
+        idleChecker();
+      
+}, 3000);
+      
+      // looping helper to compare past and current sprite position
+      
+      function watchChange(getValue, target, delay, callback) {
+    const prev = getValue();
+    setInterval(() => {
+        const next = getValue();
+        if (next !== prev) callback(target);
+    }, delay);
+};     
+      
+      function resetSprite (sprite) {
+        console.log("resetting position of", sprite.id);
+        
+        // send the appropriate sprite back to home        
+        sprite.x = 3;
+        sprite.y = spriteOrigin.get(sprite);
+        var idleReport = sprite.name + " returned to home";
+        socket.emit('chat message', idleReport);
+        
+      };      
+      
+      function idleChecker(){
+                
+          // this is called on load
+        console.log("idle check active at ", 5*60*1000, " milliseconds");
+                
+          sprites.forEach((sprite) => {
+          watchChange(() => JSON.stringify([sprite.x, sprite.y]), sprite, 5 * 60 * 1000, () => resetSprite(sprite));      
+          });
+            
+      };  
+    
+    </script>
+    
+    
     
     
     

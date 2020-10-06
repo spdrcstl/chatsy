@@ -1,0 +1,4 @@
+1. add extra layers to dressup
+2. draw dressup layers lol
+3. add NAME field and prefix message with it
+4. add idle 
