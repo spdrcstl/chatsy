@@ -12,21 +12,25 @@ html,body {
 
 
 #container {
+    box-sizing: border-box;
  display: flex;
   flex-wrap: wrap;
-  min-height: 100vh;
-  align-items: center;
+  min-height: 95vh;
+  
   justify-content: center;
 
 }
 
 #chat {
+  padding:10px;
  flex: auto;
   min-width: 50%;
   min-height: 50%;
+  background-color: #e99fe4;
 }
 
 #gamecanvas {
+  padding:10px;
 	flex:auto;
   min-width: 50%;
   min-height: 50%;
@@ -41,8 +45,10 @@ html,body {
 
 #about {
  flex:auto;
-  
+  padding:25px;
+  font-size: 12pt;
   min-height: 50%;
+  background-color:#f3ddf2;
 }
       
       #playerscol {
@@ -54,12 +60,14 @@ html,body {
       #playerphotos {
         flex:auto;
         flex-basis:25%;
+        
       }
       
       .dressup {
         position:absolute;
         top: 0px;
         left: 0px;
+        background-color:#f3ddf2;
         
         
         
@@ -70,7 +78,7 @@ html,body {
 position:relative;
 width:200px;
 height: 200px;
-background-colour:grey;
+background-colour:#f3ddf2;
   background-image: url(assets/bg1.png);
 }
 
@@ -216,7 +224,7 @@ td {height:80%; overflow:scroll;}
 
 #messages li { padding: 5px 10px; }
 
-#messages li:nth-child(odd) { background: #303030; }
+#messages li:nth-child(odd) { background: #f6ecf5; color:#e99fe4; }
 
 #messages { margin-bottom: 40px }
     
@@ -9806,7 +9814,20 @@ addDeferredDialogTag('dialog', editDialog);
        
       
             
-      <div id="about" style="background-color:#aaaaaa"> SPDRCSTL'S CHATSY ABOMINATION
+      <div id="about" style="background-color:#f3ddf2; color:black"> 
+        
+        <i>Freya C's 
+          <br>Chat Dressup & Hangout Zone </i>
+        <br>
+        <br>Q: What is this? 
+        <br>A: An online networked hack of bitsy, made with SWCTN prototype funding, to integrate a live chat feature, selectable multiplayer avatars, and a live dressup game element.
+        <br>Inspired by Zone, likelike, picrew, and bitsy of course.
+        <br>
+        <br>TO START: select a player avatar at top-right, then use buttons to change outfit and click SET when done.
+        <br>You currently need to click on elements to select them e.g. to type text, or to move in-game.
+        <br>
+        <br>Thanks to candle, sean, & dana for programming advice & soundboarding.
+        <br>
       </div>
       
       
@@ -9903,9 +9924,8 @@ addDeferredDialogTag('dialog', editDialog);
           //console.log("ss is", spriteSaid);
           var msg = $('#nameSet').val() + ": " + $('#m').val();
           socket.emit('chat message', msg, spriteSaid);
-          // socket.emit('newDial', $('#dial').val());
           $('#m').val('');
-          // $('#dial').val('');
+          
           return false;
         });
         socket.on('chat message', function(msg, spriteSaid){
@@ -9937,7 +9957,8 @@ addDeferredDialogTag('dialog', editDialog);
                list.removeChild(removeMe); 
              }
                     
-          //NOW check for movement commands
+          //NOW check for movement commands; this needs improving to call a proper move command instead of the local player
+            
               var str = msg;
         if (str.indexOf('RIGHT') >= 0) {
             console.log('chat right');
