@@ -15,6 +15,8 @@ html,body {
  display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -28,6 +30,7 @@ html,body {
 	flex:auto;
   min-width: 50%;
   min-height: 50%;
+  background-color: #e99fe4;
 }
 
 #avatar: {
@@ -47,13 +50,19 @@ html,body {
         min-height: 50%;
   
   
-}
-    
-
-      
+}      
       #playerphotos {
         flex:auto;
         flex-basis:25%;
+      }
+      
+      .dressup {
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        
+        
+        
       }
 
 .background {
@@ -62,7 +71,7 @@ position:relative;
 width:200px;
 height: 200px;
 background-colour:grey;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH4SURBVHhe7dJBDQAwCAAxTOB5sjGx+zWphM6bhe/EIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLhFgkxCIhFgmxSIhFQiwSYpEQi4RYJMQiIRYJsUiIRUIsEmKREIuEWCTEIiEWCbFIiEVCLBJikRCLwOwBu6TY0jwrF24AAAAASUVORK5CYII=);
+  background-image: url(assets/bg1.png);
 }
 
 
@@ -98,6 +107,91 @@ width:200px;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQASURBVHhe7d3NbVRBEIXRgRyIhTCcBbEQA1kQhrPiST2ykPmxBb7Qt/qcDbOk+n2u18wCv/t8+3CDt/b+/ie8KWERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRPgFAi/78vXj/dNLPj083j8dT1g/8fqSfu/kzoR191Yx/cppkZ0eVrqnHx1S2Llh/fukvjc+rxPD+r9JPTO1sIPC2qqnZ+bldcr3WDtXddn8r/cH5m+srmc2ZnUN31h1m2DM6hq7sdqfUPvqmrmxBvzct48wMKwxb5PqQaaFNaaqpXecUWENq2opHWpOWCOrWhpHGxLW4KqWugEnhDW+qqVrzPqwDqlqKRq2O6yjqlpaRp5zeWcrxWEduK6WisFbwzq2qmX/8b0KiagM6/B1tWx+CDYWEX1hWVdPdj4KG4sIYXXbdmmVheU92MLGIkJY9fbc4k1heQ8WsbGIEBYRwiKiJiwXrN/Y8HBsLCKERYSwiBAWEcIiQlhECIsIYREhLCKERURNWON/R8jf2PBwbCwihEWEsIgQFhFNYbm//9Sex2JjESEsIsrC8jZ8ZtsDsbGI6AvL0nqy81HYWERUhmVpXTY/BBuLiNawDl9a+49fvLGObaticK9CIrrDOnBptYxcv7GOaqto2AmvwkPa6hpzyB1rfFt1A865vA9uq3G0OWFdRrZVOtSosC7D2uodZ1pYlzFtVQ8yMKzLgLbaR3j3+fbh/nGixv8Sd8bGnbmxntQ9pBlVXYZvrCcVq2tMVZdTwrrs3NakpBYb6z+bl9Qy/I617LyrGv958Rrzw9r/yY1sa3hYLc9sXluTw+p6WsPaOuKOxb83NqzGBTBpac0Mq/cJjWlrYFjtz2ZGW+5YOxrQ1rSwxrxK2o0Ka1JV7bN4FRIxJ6x5L8HqiYaENfVq1TuXVyERE8Kauq6W0ulsLCLqw5q9rpbGGW0sIoTVoW5pdYd1wnuwlI1FRHFYp62rrnltLCKERURrWGde24umtrGIqAzr5G8ZWma3sYgQFhHCIqIvrJMvWEvFCdhYRAiLCGERISwiysJyc1/2PwcbiwhhESEsIoRFhLCIEBYRTWH5ruF7m5+GjUWEsIgQFhHCIkJYRAiLCGERISwihEWEsIgQFhHCIkJYRAiLCGERISwimsL69PB4/8T2p2FjESEsIoRFhLCIEBYRwiKiLCzfOCz7n4ONRYSwiBAWEcIioi8s9/eKE7CxiBAWEcIiojKsk69ZLbPbWES0hnXm0iqa2sYiQlgE3G7fAKql5Vk42yEVAAAAAElFTkSuQmCC);
 
 }
+      
+.head1 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/head1.png);
+}
+      
+      .head2 {
+        position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/head2.png);
+}
+      
+      .head3 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/head3.png);
+}
+      
+      .torso1 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/torso1.png);
+}
+      
+      .torso2 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/torso2.png);
+}
+      
+      .torso3 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/torso3.png);
+}
+        
+     .arms1 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/arms1.png);
+}
+      
+      .arms2 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/arms2.png);
+}
+      
+      .arms3 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/arms3.png);
+}
+
+       .legs1 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/legs1.png);
+}
+      
+      .legs2 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/legs2.png);
+}
+      
+      .legs3 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/legs3.png);
+}
+      
 
       #playerimages {
         position:relative;       
@@ -136,7 +230,7 @@ td {height:80%; overflow:scroll;}
 
 PAL 0
 NAME blueprint
-0,82,204
+233,159,228
 128,159,255
 255,255,255
 
@@ -9684,12 +9778,19 @@ addDeferredDialogTag('dialog', editDialog);
     <div id="container">
       <div id="avatar" style="background-color:grey" >
       		<div id="background" class="background">
-      			<div id="portrait"></div>
+      			<div id="avHead" class="dressup"></div>
+            <div id="avTorso" class="dressup"></div>
+            <div id="avArms" class="dressup"></div>
+            <div id="avLegs" class="dressup"></div>
+            
       		</div>
       	
       
-      <input type="button" value="NEXT" id="nextPortrait" onclick="nextport()">
-        <input type="button" value="SET" id="setAvatar" onclick="setAvatar()">
+        <input type="button" value="HEAD" id="nextHead" onclick="nextHead()">
+        <input type="button" value="TORSO" id="nextTorso" onclick="nextTorso()">
+        <input type="button" value="ARMS" id="nextArms" onclick="nextArms()">
+        <input type="button" value="LEGS" id="nextLegs" onclick="nextLegs()">
+        
 
       	</div>
        <div id="currentAvatar" style="background-color:grey" >
@@ -9698,7 +9799,9 @@ addDeferredDialogTag('dialog', editDialog);
         <div>
           
         </div>
-        CURRENT
+        <input type="button" value="SET" id="setAvatar" onclick="setAvatar()"> CURRENT
+        <br><input id="nameSet" autocomplete="off" tabindex="3" />
+         
       </div>
        
       
@@ -9796,14 +9899,21 @@ addDeferredDialogTag('dialog', editDialog);
       $(function () {
         
         $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
+          var spriteSaid = playerId;
+          //console.log("ss is", spriteSaid);
+          var msg = $('#nameSet').val() + ": " + $('#m').val();
+          socket.emit('chat message', msg, spriteSaid);
           // socket.emit('newDial', $('#dial').val());
           $('#m').val('');
           // $('#dial').val('');
           return false;
         });
-        socket.on('chat message', function(msg){
+        socket.on('chat message', function(msg, spriteSaid){
           //print to chat log          
+          if (msg === "") {
+          console.log("blank message");
+          } else  {
+          
           $('#messages').append($('<li>').text(msg));
           // if we're scrollin shit
           // document.getElementById("messages").scrollTo(0, document.body.scrollHeight);
@@ -9857,15 +9967,18 @@ addDeferredDialogTag('dialog', editDialog);
           }
                   
           var mapObj = 'sprite';
-          var tgtObj = getImage(playerId, sprite);
+          var tgtObj = getImage(spriteSaid, sprite);
+          
             if (!tgtObj) {
-	      	  throw new Error('Target "' + playerId + '" was not the id/name of a ' + mapObj + '.');
+	      	  throw new Error('Target "' + spriteSaid + '" was not the id/name of a ' + mapObj + '.');
 	          }
 	        dialog[tgtObj.dlg].src = newMessage;
       	  scriptInterpreter.Compile(tgtObj.dlg, newMessage);
   
         }
-        });
+     // endif
+    }
+  });
         
         // sprite movement
         
@@ -9906,38 +10019,124 @@ addDeferredDialogTag('dialog', editDialog);
 
     
     <script>
-var state={portvar:0};
+var state={headVar:0};
+var state={torsoVar:0};
+var state={armsVar:0};
+var state={legsVar:0};
 
-function nextport()
+function nextHead()
 {
-	console.log("inside function nextport");
+	console.log("inside function nextHead");
 	
-	var port=document.getElementById("portrait");
+	var head = document.getElementById("avHead");
 	
-	if (state.portvar===0){
-   	port.setAttribute("class","portrait1");
-    		state.portvar++;
-    		console.log(state.portvar);
-  
-      }
+	if (state.headVar===0){
+   	head.setAttribute("class","head1");
+    		state.headVar++;
+    		console.log(state.headVar);
+        }
     else
-    	if(state.portvar===1){
-    		port.setAttribute("class","portrait2");
-    		state.portvar++;
-    		console.log(state.portvar);
+    	if (state.headVar===1){
+   	head.setAttribute("class","head2");
+    		state.headVar++;
+    		console.log(state.headVar);
     	}
     else
-    	if(state.portvar===2){
-    		port.setAttribute("class","portrait3");
-    		state.portvar=0;
-        console.log(state.portvar);
-    	}
+    	if (state.headVar===2){
+   	head.setAttribute("class","head3");
+    		state.headVar=0;
+    		console.log(state.headVar);
+	} 
+
 }
 
+function nextTorso()
+{
+	console.log("inside function nextTorso");
+	
+	var torso = document.getElementById("avTorso");
+	
+	if (state.torsoVar===0){
+   	torso.setAttribute("class","torso1");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+        }
+    else
+    	if (state.torsoVar===1){
+   	torso.setAttribute("class","torso2");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+    	}
+    else
+    	if (state.torsoVar===2){
+   	torso.setAttribute("class","torso3");
+    		state.torsoVar = 0;
+    		console.log(state.torsoVar);
+	} 
+
+}
+
+function nextArms()
+{
+	console.log("inside function nextArms");
+	
+	var arms = document.getElementById("avArms");
+	
+	if (state.armsVar===0){
+   	arms.setAttribute("class","arms1");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+        }
+    else
+    	if (state.armsVar===1){
+   	arms.setAttribute("class","arms2");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+        }
+    else
+    	if (state.armsVar===2){
+   	arms.setAttribute("class","arms3");
+    		state.armsVar = 0;
+    		console.log(state.armsVar);
+        }
+    else
+    { console.log("no arms set");
+        }
+
+}
+
+function nextLegs()
+{
+	console.log("inside function nextLegs");
+	
+	var legs = document.getElementById("avLegs");
+	
+	if (state.legsVar===0){
+   	legs.setAttribute("class","legs1");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+        }
+    else
+    	if (state.legsVar===1){
+   	legs.setAttribute("class","legs2");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+        }
+    else
+    	if (state.legsVar===2){
+   	legs.setAttribute("class","legs3");
+    		state.legsVar = 0;
+    		console.log(state.legsVar);
+        }
+
+}
 function initav()
 {
 	console.log("window has loaded");
-	state.portvar=1;
+	state.headVar=1;
+  state.torsoVar=1;
+  state.armsVar=1;
+  state.legsVar=1;
 }
       
     </script>
