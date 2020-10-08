@@ -5,55 +5,86 @@
     
     <style>
 
+      @font-face {
+  font-family: "indieflower";
+  src: url(https://cdn.glitch.com/253b4cd5-48b2-468b-aee2-89f9359b4a8b%2Findieflower.ttf?v=1602069725388) format("truetype");
+}
+   
+      
 html,body {
+  font-family: "indieflower", serif;
+  font-size:18pt;
  width: 100%;
- height: 100%;
+ height: 80%;
+  box-sizing: border-box;
+  background-color: #e99fe4;
 }
 
 
-#container {
+#containertop {
     box-sizing: border-box;
  display: flex;
   flex-wrap: wrap;
-  min-height: 95vh;
+  flex-grow:1;
+    flex-direction: row;
+  width:100%;
+  background-color: #e99fe4;
   
-  justify-content: center;
-
+  
+}
+      
+      #containerbtm {
+    box-sizing: border-box;
+ display: flex;
+  flex-wrap: wrap;
+    flex-direction: row;
+        flex-grow:1;
 }
 
 #chat {
   padding:10px;
  flex: auto;
-  min-width: 50%;
-  min-height: 50%;
+  height:60%;
+  width:80%;
+    flex: 1;
+  
   background-color: #e99fe4;
 }
 
 #gamecanvas {
   padding:10px;
 	flex:auto;
-  min-width: 50%;
-  min-height: 50%;
+
   background-color: #e99fe4;
+  align-content:center;
+    flex: 1;
 }
 
 #avatar: {
 	flex:auto;
-  
+  padding:5px;
   min-height: 50%;
+  flex-grow: 1;
       }
 
 #about {
  flex:auto;
-  padding:25px;
-  font-size: 12pt;
+  padding:20px;
+  font-size: 14pt;
   min-height: 50%;
+min-width:60%;
+  max-width:60%;
   background-color:#f3ddf2;
+  overflow:scroll;
+    
+  flex-grow:2;
 }
       
       #playerscol {
  flex:auto;
-        min-height: 50%;
+        width:25%;
+        
+        flex-grow:0.25;
   
   
 }      
@@ -65,19 +96,37 @@ html,body {
       
       .dressup {
         position:absolute;
-        top: 0px;
-        left: 0px;
-        background-color:#f3ddf2;
-        
-        
-        
+        top: 5px;
+        left: 5px;
+        background-color:#f3ddf2;        
       }
 
+      .Offline {
+width:10px;
+height:10px;
+background-color: #ff6961;
+}
+
+.Online {
+width:10px;
+height:10px;
+background-color: #93db70;
+}
+
+.nameField {
+	border: 0; 
+        padding: 5px; 
+        width: 80%; 
+        font-size: 14px; 
+    font-weight:bold;
+}      
+      
 .background {
 
 position:relative;
 width:200px;
 height: 200px;
+  margin:10px;
 background-colour:#f3ddf2;
   background-image: url(assets/bg1.png);
 }
@@ -200,6 +249,17 @@ width:200px;
    background-image: url(assets/legs3.png);
 }
       
+      .name {
+        border: 0; 
+        padding: 5px; 
+        width: 80%; 
+        
+        margin-right: .5%;  
+        font-size: 12px; 
+        align-self: baseline;
+
+      }
+      
 
       #playerimages {
         position:relative;       
@@ -208,7 +268,7 @@ width:200px;
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body { font: 24px Helvetica, Arial; color:white;background:black;}
+body {color:white;background:black;}
 
 form { background: #000; padding: 3px; position: relative; bottom: 0; width: 100%;  font-size: 12px;}
 
@@ -222,7 +282,7 @@ td {height:80%; overflow:scroll;}
 
 #messages { list-style-type: none; margin: 0; padding: 0; }
 
-#messages li { padding: 5px 10px; }
+#messages li { padding: 5px 10px; overflow: hidden;}
 
 #messages li:nth-child(odd) { background: #f6ecf5; color:#e99fe4; }
 
@@ -462,9 +522,14 @@ html {
 }
 
 #game {
-	background:black;
+	flex:auto;
+  background:black;
 	margin:auto;
 	display:block;
+  align-content:center;
+  justify-content: center;
+  height:90%;
+  
 }
 </style>
 
@@ -9782,8 +9847,8 @@ addDeferredDialogTag('dialog', editDialog);
    
   </head>
   
-  <body onload="startExportedGame();initav();">
-    <div id="container">
+  <body onload="startExportedGame();initav();onload=getStatus();">
+    <div id="containertop">
       <div id="avatar" style="background-color:grey" >
       		<div id="background" class="background">
       			<div id="avHead" class="dressup"></div>
@@ -9807,8 +9872,8 @@ addDeferredDialogTag('dialog', editDialog);
         <div>
           
         </div>
-        <input type="button" value="SET" id="setAvatar" onclick="setAvatar()"> CURRENT
-        <br><input id="nameSet" autocomplete="off" tabindex="3" />
+        <input type="button" value="SET" id="setAvatar" onclick="setAvatar();setName()"> CURRENT
+        <br>Name: <input id="nameSet" class="name" autocomplete="off" tabindex="3" />
          
       </div>
        
@@ -9816,77 +9881,82 @@ addDeferredDialogTag('dialog', editDialog);
             
       <div id="about" style="background-color:#f3ddf2; color:black"> 
         
-        <i>Freya C's 
-          <br>Chat Dressup & Hangout Zone </i>
-        <br>
+        <span style="font-size: 24pt;"> <i><b>CHATSY</b> beta</i></span>
+          <span style="font-size: 18pt;"><br><i><b>C</b>hat <b>H</b>angout <b>A</b>nd <b>T</b>ryonclothes bit<b>SY</b> zone </i> </span>
         <br>Q: What is this? 
-        <br>A: An online networked hack of bitsy, made with SWCTN prototype funding, to integrate a live chat feature, selectable multiplayer avatars, and a live dressup game element.
-        <br>Inspired by Zone, likelike, picrew, and bitsy of course.
+        <br>A: An online networked hack of bitsy by <a href="https://twitter.com/spdrcstl">Freya Campbell</a>, made with support from SWCTN, to integrate a live chat feature, selectable multiplayer avatars, and a live dressup game element.
+        <br>Inspired by <a href="https://tinybird.zone/">Zone</a>, <a href="https://likelike.glitch.me">likelike</a>, <a href="https://picrew.me/">picrew</a>, and <a href="https://ledoux.itch.io/bitsy">bitsy</a> of course.
         <br>
-        <br>TO START: select a player avatar at top-right, then use buttons to change outfit and click SET when done.
-        <br>You currently need to click on elements to select them e.g. to type text, or to move in-game.
+        <br>TO START: enter a name, select a player avatar at top-right, then use buttons on left to change outfit and click SET when done. You currently need to click on elements to select them e.g. to type text, or to move in-game.
         <br>
         <br>Thanks to candle, sean, & dana for programming advice & soundboarding.
-        <br>
       </div>
       
       
       
        <div class="playerscol" style="background-color:#bbbbbb"> 
        <div id="player1">
+         <span id="player1Name" class="nameField"></span><br>
          <canvas id="playerAcustom" width="50px" height="50px"></canvas><br>
-      	 <input type="button" class="playerimages" value="ENGAGE PC1" onclick="setPlayer1()">
-         <br><span id="player1active">ON</span><br>
+      	 <input type="button" class="playerimages" value="Be Player 1" onclick="setPlayer1()">
+         <br><span id="player1Online">ON</span><br>
 	</div>
 	<div id="player2">
+    <span id="player2Name" class="nameField"></span><br>
 	 <canvas id="playeracustom" width="50px" height="50px"></canvas><br>
-         <input type="button" class="playerimages" value="ENGAGE PC2" onclick="setPlayer2()">
-        <br><span id="player2active">OFF</span>
+         <input type="button" class="playerimages" value="Be Player 2" onclick="setPlayer2()">
+        <br><span id="player2Online">OFF</span>
        </div>
    </div>
       <div class="playerscol" style="background-color:#cccccc">
        <div id="player3">
+         <span id="player3Name" class="nameField"></span><br>
 	 <canvas id="playerbcustom" width="50px" height="50px"></canvas><br>
-      <input type="button" class="playerimages" value="ENGAGE PC3" onclick="setPlayer3()">
-        <br><span id="player3active">OFF</span><br>
+      <input type="button" class="playerimages" value="Be Player 3" onclick="setPlayer3()">
+        <br><span id="player3Online">OFF</span><br>
        </div>
 	<div id="player4">
+    <span id="player4Name" class="nameField"></span><br>
   	<canvas id="playerccustom" width="50px" height="50px"></canvas><br>
-      <input type="button" class="playerimages" value="ENGAGE PC4"  onclick="setPlayer4()">
-        <br><span id="player4active">OFF</span>
+      <input type="button" class="playerimages" value="Be Player 4"  onclick="setPlayer4()">
+        <br><span id="player4Online">OFF</span>
      </div>
       </div>
         <div class="playerscol" style="background-color:#bbbbbb">
 	<div id="player5">
+    <span id="player5Name" class="nameField"></span><br>
 <canvas id="playerdcustom" width="50px" height="50px"></canvas><br>
-      <input type="button" class="playerimages" value="ENGAGE PC5"  onclick="setPlayer5()"><br>
-          <span id="player5active">OFF</span><br>
+      <input type="button" class="playerimages" value="Be Player 5"  onclick="setPlayer5()"><br>
+          <span id="player5Online">OFF</span><br>
 </div>
 <div id="player6">
+  <span id="player6Name" class="nameField"></span><br>
      <canvas id="playerecustom" width="50px" height="50px"></canvas><br>
-      <input type="button" class="playerimages" value="ENGAGE PC6"  onclick="setPlayer6()">
-          <br><span id="player6active">OFF</span>
+      <input type="button" class="playerimages" value="Be Player 6"  onclick="setPlayer6()">
+          <br><span id="player6Online">OFF</span>
 </div>
       </div>
           <div class="playerscol" style="background-color:#cccccc">
 <div id="player7"> 	
+  <span id="player7Name" class="nameField"></span><br>
 <canvas id="playerfcustom" width="50px" height="50px"></canvas><br>
-      <input type="button" class="playerimages" value="ENGAGE PC7"  onclick="setPlayer7()">
-            <br><span id="player7active">OFF</span><br>
+      <input type="button" class="playerimages" value="Be Player 7"  onclick="setPlayer7()">
+            <br><span id="player7Online">OFF</span><br>
 </div>
 <div id="player8">
+  <span id="player8Name" class="nameField"></span><br>
       <canvas id="playergcustom" width="50px" height="50px"></canvas><br>
-      <input type="button" class="playerimages" value="ENGAGE PC8" onclick="setPlayer8()">
-            <br><span id="player8active">OFF</span>
+      <input type="button" class="playerimages" value="Be Player 8" onclick="setPlayer8()">
+            <br><span id="player8Online">OFF</span>
 </div>
       </div>
-      
+    </div>
+    <div id="containerbtm">
     
     
       <div id="chat">
          
          <ul id="messages">
-         <li>...</li>
          <li>...</li>
          <li>...</li>
          <li>...</li>
@@ -9905,7 +9975,7 @@ addDeferredDialogTag('dialog', editDialog);
          </form>
       </div> 
       <div id="gamecanvas">
-           <canvas id="game" tabindex="1" height="90%"></canvas>
+           <canvas id="game" tabindex="1" height="100%"></canvas>
       </div>
       
 	</div>
@@ -9935,6 +10005,7 @@ addDeferredDialogTag('dialog', editDialog);
           } else  {
           
           $('#messages').append($('<li>').text(msg));
+    //        notifyMe(msg);
           // if we're scrollin shit
           // document.getElementById("messages").scrollTo(0, document.body.scrollHeight);
           
@@ -10163,30 +10234,40 @@ function initav()
     </script>
  
     <script>
+      
+      function setName(){
+        
+            var name =  $('#nameSet').val();
+  // console.log(name);
+   var isActive = player();
+   // console.log("sending", isActive);
+   socket.emit ('active', name, isActive);
+      
+      };
+      
+      
     function setAvatar()
 {
  
-// draws the avatar to the temp canvas
-
+// draws the avatar and name to the temp canvas
   
+ 
   
-  var element = document.getElementById('tempAv');
+  html2canvas(document.querySelector("#background")).then(canvas => {
+    
+     var element = document.getElementById('tempAv');
  
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(typeof(element) != 'undefined' && element != null){
         element.parentNode.removeChild(element);
     } else{
         console.log("no av set");
-    }
-  
-  html2canvas(document.querySelector("#background")).then(canvas => {
+   }
     
     document.getElementById('background2').appendChild(canvas).setAttribute("id", 'tempAv');
 });      
   
-   // now copy across server to canvas minis
-  // TODO: actually make the canvas minis you fuck
-  
+   // now copy across server to canvas minis  
    
    setTimeout(function(targetAv){
      
@@ -10194,14 +10275,12 @@ function initav()
 
      
   var src = document.getElementById('tempAv');
-  console.log(targetAv)
+  // console.log(targetAv)
   var dataURL = src.toDataURL();
      
-      socket.emit ('avUpdate', targetAv, dataURL);
-
-        
+      socket.emit ('avUpdate', targetAv, dataURL);      
      
-   }, 2000);
+   }, 1000);
   
 }
       
@@ -10214,58 +10293,202 @@ function initav()
     
     function setPlayer1(){
       
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
+      
       var targetId = "A"
       playerId = targetId;
       curPlayerIs = 'A';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
     function setPlayer2(){
       
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
+      
       var targetId = "a"
-      playerId = targetId;  
-     curPlayerIs = 'a';
+      playerId = targetId;
+      curPlayerIs = 'a';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
      function setPlayer3(){
       
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
+      
       var targetId = "b"
-      playerId = targetId;      
+      playerId = targetId;
       curPlayerIs = 'b';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
      function setPlayer4(){
       
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
+      
       var targetId = "c"
-      playerId = targetId;  
-       curPlayerIs = 'c';
+      playerId = targetId;
+      curPlayerIs = 'c';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
-    function setPlayer5(){
+    function setPlayer5(){   
+      
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
       
       var targetId = "d"
-      playerId = targetId; 
-       curPlayerIs = 'd';
+      playerId = targetId;
+      curPlayerIs = 'd';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
     function setPlayer6(){
       
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
+      
       var targetId = "e"
-      playerId = targetId;      
+      playerId = targetId;
       curPlayerIs = 'e';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
      function setPlayer7(){
       
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
+      
       var targetId = "f"
-      playerId = targetId;   
-        curPlayerIs = 'f';
+      playerId = targetId;
+      curPlayerIs = 'f';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
      function setPlayer8(){
       
+      var curPlayer = activePlayer.get(playerId);
+      var playerIndicator = 'player' + curPlayer + 'Online';    
+       var name =  $('').val();
+       var inactive = player();
+       // console.log("sending"+ isActive);
+       socket.emit ('inactive', name, inactive);    
+            
+      document.getElementById(playerIndicator).setAttribute("class","Offline");
+      document.getElementById(playerIndicator).innerHTML = "OFF";
+      
       var targetId = "g"
-      playerId = targetId;  
-        curPlayerIs = 'g';
+      playerId = targetId;
+      curPlayerIs = 'g';
+      
+      setTimeout(function(){
+        
+        setName();       
+        setAvatar();
+        
+      }, 1000);
+      
     };
     
     </script>
@@ -10312,34 +10535,169 @@ function initav()
 };     
       
       function resetSprite (sprite) {
-        console.log("resetting position of", sprite.id);
+        // console.log("resetting position of", sprite.id);
         
         // send the appropriate sprite back to home        
         sprite.x = 3;
         sprite.y = spriteOrigin.get(sprite);
-        var idleReport = sprite.name + " returned to home";
-        socket.emit('chat message', idleReport);
+        // var idleReport = sprite.name + " returned to home";
+        // console.log(idleReport);
+        
         
       };      
       
       function idleChecker(){
                 
           // this is called on load
-        console.log("idle check active at ", 5*60*1000, " milliseconds");
+        console.log("idle check active at ", 10*60*1000, " milliseconds");
                 
           sprites.forEach((sprite) => {
-          watchChange(() => JSON.stringify([sprite.x, sprite.y]), sprite, 5 * 60 * 1000, () => resetSprite(sprite));      
+          watchChange(() => JSON.stringify([sprite.x, sprite.y]), sprite, 10*60*1000, () => resetSprite(sprite));      
           });
             
       };  
     
     </script>
     
+<script>
+    // desktop notifications
+  
+  function notifyMe(msg) {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    new Notification(msg);
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        new Notification(msg);
+      }
+    });
+  }
+
+  // At last, if the user has denied notifications, and you 
+  // want to be respectful there is no need to bother them any more.
+}
+        
     
+    </script>    
     
+    <script>
+    // loading sync
+
+function getStatus() {
+
+var me = playerId;
+
+socket.emit('update', me);
+};
+      
+
+socket.on('update', function(me){
+
+if (playerId !== me){
+
+// send avatar
+
+  var targetAv = "player" + curPlayerIs + "custom";
+  var src = document.getElementById('tempAv');
+  // console.log(targetAv)
+  var dataURL = src.toDataURL();
+     
+  socket.emit ('avUpdate', targetAv, dataURL);
+
+// send location
+
+    var sprToMove = playerId;
+    var movex = player().x;
+    var movey = player().y;
+//  console.log(sprToMove, movex, movey);
+
+    socket.emit ('move', sprToMove, movex, movey);
+
+// send name & activity status
+
+   var name =  $('#nameSet').val();
+   var isActive = player();
+   // console.log("sending"+ isActive);
+   socket.emit ('active', name, isActive);
+
+} else {
+
+console.log("ignored update request sent by self");
+
+}
+
+});
+
+
+// set up players lookup
+
+    const activePlayer = new Map();
+
+      players = ['A', 'a', 'b', 'c', 'd', 'e', 'f', 'g'];
+      
+      activePlayer.set("A", 1);
+      activePlayer.set("a", 2);
+      activePlayer.set("b", 3);
+      activePlayer.set("c", 4);
+      activePlayer.set("d", 5);
+      activePlayer.set("e", 6);
+      activePlayer.set("f", 7);
+      activePlayer.set("g", 8);
+      
+   //   var test activePlayer activePlayer.get(isActive);
+
+
+socket.on('active', function (name, isActive){
+// console.log("received", name, isActive);
+var curPlayer = activePlayer.get(isActive.id);
+  
+var playerIndicator = 'player' + curPlayer + 'Online';
+  
+console.log("playerIndic is ", playerIndicator);
+  
+
+document.getElementById(playerIndicator).setAttribute("class","Online");
+  document.getElementById(playerIndicator).innerHTML = "ON";
+
+var playerNameSpanId = 'player' + curPlayer + 'Name';
+ // console.log("span is ", playerNameSpanId);
+  
+document.getElementById(playerNameSpanId).innerHTML = name;
+
+});      
+      
+      
+      socket.on('inactive', function (name, inctive){
+// console.log("received", name, isActive);
+var curPlayer = activePlayer.get(inctive.id);
+  
+var playerIndicator = 'player' + curPlayer + 'Online';
+  
+console.log("playerIndic is ", playerIndicator);
+  
+
+document.getElementById(playerIndicator).setAttribute("class","Offline");
+  document.getElementById(playerIndicator).innerHTML = "OFF";
+
+var playerNameSpanId = 'player' + curPlayer + 'Name';
+ // console.log("span is ", playerNameSpanId);
+  
+document.getElementById(playerNameSpanId).innerHTML = name;
+
+});    
     
-    
-    
+    </script>
     
     
     

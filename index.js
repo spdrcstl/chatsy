@@ -17,6 +17,15 @@ io.on('connection', function(socket){
   socket.on('avUpdate', function(targetAv, dataURL){
     io.emit('avUpdate', targetAv, dataURL);
    });
+   socket.on('update', function(me){
+    io.emit('update', me);
+   });
+  socket.on('active', function(name, isActive){
+    io.emit('active', name, isActive);
+   });
+    socket.on('inactive', function(name, inactive){
+    io.emit('inactive', name, inactive);
+   });
   
   
 });
@@ -26,3 +35,7 @@ http.listen(port, function(){
 });
 
 // assets code below
+
+
+
+

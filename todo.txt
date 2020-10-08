@@ -1,4 +1,4 @@
-1. add extra layers to dressup
-2. draw dressup layers lol
-3. add NAME field and prefix message with it
-4. add idle 
+0. draw bitsy world
+1. selfie mode - draw current player id and last-interacted-with player ID to canvas
+2. name & avatar wipe on idle detection (extended to 10 mins)
+3. Music? idk
