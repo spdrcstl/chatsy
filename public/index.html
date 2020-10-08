@@ -185,6 +185,13 @@ width:200px;
   height: 200px;
    background-image: url(assets/head3.png);
 }
+
+     .head4 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/ashhead1.png);
+}
       
       .torso1 {
 position:absolute;
@@ -205,6 +212,13 @@ position:absolute;
 width:200px;
   height: 200px;
    background-image: url(assets/torso3.png);
+}
+
+     .torso4 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/ashtorso1.png);
 }
         
      .arms1 {
@@ -228,6 +242,13 @@ width:200px;
    background-image: url(assets/arms3.png);
 }
 
+     .arms4 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/asharms1.png);
+}
+
        .legs1 {
 position:absolute;
 width:200px;
@@ -248,6 +269,14 @@ width:200px;
   height: 200px;
    background-image: url(assets/legs3.png);
 }
+
+	.legs4 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/ashlegs1.png);
+
+	}
       
       .name {
         border: 0; 
@@ -10136,6 +10165,12 @@ function nextHead()
     else
     	if (state.headVar===2){
    	head.setAttribute("class","head3");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+	 else
+    	if (state.headVar===3){
+   	head.setAttribute("class","head4");
     		state.headVar=0;
     		console.log(state.headVar);
 	} 
@@ -10162,9 +10197,16 @@ function nextTorso()
     else
     	if (state.torsoVar===2){
    	torso.setAttribute("class","torso3");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+	else
+		if (state.torsoVar===3){
+   	torso.setAttribute("class","torso4");
     		state.torsoVar = 0;
     		console.log(state.torsoVar);
 	} 
+
 
 }
 
@@ -10188,11 +10230,14 @@ function nextArms()
     else
     	if (state.armsVar===2){
    	arms.setAttribute("class","arms3");
-    		state.armsVar = 0;
+    		state.armsVar++;
     		console.log(state.armsVar);
         }
-    else
-    { console.log("no arms set");
+        else
+    	if (state.armsVar===3){
+   	arms.setAttribute("class","arms4");
+    		state.armsVar = 0;
+    		console.log(state.armsVar);
         }
 
 }
@@ -10217,6 +10262,12 @@ function nextLegs()
     else
     	if (state.legsVar===2){
    	legs.setAttribute("class","legs3");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+        }
+         else
+    	if (state.legsVar===3){
+   	legs.setAttribute("class","legs4");
     		state.legsVar = 0;
     		console.log(state.legsVar);
         }
