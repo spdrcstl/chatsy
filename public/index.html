@@ -193,11 +193,53 @@ width:200px;
    background-image: url(assets/ashhead1.png);
 }
 
-  .head4 {
+  .head5 {
 position:absolute;
 width:200px;
   height: 200px;
    background-image: url(assets/benhead1.png);
+}
+
+  .head6 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/ashhead2.png);
+}
+
+  .head7 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/maxhead1.png);
+}
+
+  .head8 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/vghead1.png);
+}
+
+  .head9 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmhead1.png);
+}
+
+.head10 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmhead2.png);
+}
+
+.head11 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmhead3.png);
 }
       
       .torso1 {
@@ -234,6 +276,48 @@ width:200px;
   height: 200px;
    background-image: url(assets/bentorso1.png);
 }
+
+     .torso6 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/ashtorso2.png);
+}
+
+     .torso7 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/maxtorso1.png);
+}
+
+    .torso8 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/vgtorso1.png);
+}
+
+.torso9 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmtorso1.png);
+}
+
+.torso10 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmtorso2.png);
+}
+
+.torso11 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmtorso3.png);
+}
         
      .arms1 {
 position:absolute;
@@ -268,6 +352,48 @@ position:absolute;
 width:200px;
   height: 200px;
    background-image: url(assets/benarms1.png);
+}
+
+     .arms6 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/asharms2.png);
+}
+
+     .arms7 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/maxarms1.png);
+}
+
+    .arms8 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/vgarms1.png);
+}
+
+.arms9 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmarms1.png);
+}
+
+.armso10 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmarms2.png);
+}
+
+.arms11 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmarms3.png);
 }
 
        .legs1 {
@@ -306,6 +432,48 @@ width:200px;
    background-image: url(assets/benlegs1.png);
 
 	}
+
+	     .legs6 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/ashlegs2.png);
+}
+
+     .legs7 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/maxlegs1.png);
+}
+
+    .legs8 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/vglegs1.png);
+}
+
+.legs9 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmlegs1.png);
+}
+
+.legs10 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmlegs2.png);
+}
+
+.legs11 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/tgmlegs3.png);
+}
       
       .name {
         border: 0; 
@@ -10207,6 +10375,44 @@ function nextHead()
 	 else
     	if (state.headVar===4){
    	head.setAttribute("class","head5");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+
+		if (state.headVar===5){
+   	head.setAttribute("class","head6");
+    		state.headVar++;
+    		console.log(state.headVar);
+        }
+    else
+    	if (state.headVar===6){
+   	head.setAttribute("class","head7");
+    		state.headVar++;
+    		console.log(state.headVar);
+    	}
+    else
+    	if (state.headVar===7){
+   	head.setAttribute("class","head8");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+	 else
+    	if (state.headVar===8){
+   	head.setAttribute("class","head9");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+
+		 else
+    	if (state.headVar===9){
+   	head.setAttribute("class","head10");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+
+	 else
+    	if (state.headVar===10){
+   	head.setAttribute("class","head11");
     		state.headVar=0;
     		console.log(state.headVar);
 	} 
@@ -10236,16 +10442,55 @@ function nextTorso()
     		state.torsoVar++;
     		console.log(state.torsoVar);
 	} 
-	else
-		if (state.torsoVar===3){
+	 else
+    	if (state.torsoVar===3){
    	torso.setAttribute("class","torso4");
     		state.torsoVar++;
     		console.log(state.torsoVar);
 	} 
-	else
-		if (state.torsoVar===4){
+
+	 else
+    	if (state.torsoVar===4){
    	torso.setAttribute("class","torso5");
-    		state.torsoVar = 0;
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+
+		if (state.torsoVar===5){
+   	torso.setAttribute("class","torso6");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+        }
+    else
+    	if (state.torsoVar===6){
+   	torso.setAttribute("class","torso7");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+    	}
+    else
+    	if (state.torsoVar===7){
+   	torso.setAttribute("class","torso8");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+	 else
+    	if (state.torsoVar===8){
+   	torso.setAttribute("class","torso9");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+
+		 else
+    	if (state.torsoVar===9){
+   	torso.setAttribute("class","torso10");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+
+	 else
+    	if (state.torsoVar===10){
+   	torso.setAttribute("class","torso11");
+    		state.torsoVar=0;
     		console.log(state.torsoVar);
 	} 
 
@@ -10276,17 +10521,57 @@ function nextArms()
     		console.log(state.armsVar);
         }
         else
+    	 
     	if (state.armsVar===3){
    	arms.setAttribute("class","arms4");
     		state.armsVar++;
     		console.log(state.armsVar);
-        }
-              else
+	} 
+
+	 else
     	if (state.armsVar===4){
    	arms.setAttribute("class","arms5");
-    		state.armsVar = 0;
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+
+		if (state.armsVar===5){
+   	arms.setAttribute("class","arms6");
+    		state.armsVar++;
     		console.log(state.armsVar);
         }
+    else
+    	if (state.armsVar===6){
+   	arms.setAttribute("class","arms7");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+    	}
+    else
+    	if (state.armsVar===7){
+   	arms.setAttribute("class","arms8");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+	 else
+    	if (state.armsVar===8){
+   	arms.setAttribute("class","arms9");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+
+		 else
+    	if (state.armsVar===9){
+   	arms.setAttribute("class","arms10");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+
+	 else
+    	if (state.armsVar===10){
+   	arms.setAttribute("class","arms11");
+    		state.armsVar=0;
+    		console.log(state.armsVar);
+	} 
 
 }
 
@@ -10308,23 +10593,57 @@ function nextLegs()
     		console.log(state.legsVar);
         }
     else
-    	if (state.legsVar===2){
-   	legs.setAttribute("class","legs3");
-    		state.legsVar++;
-    		console.log(state.legsVar);
-        }
-         else
+
     	if (state.legsVar===3){
    	legs.setAttribute("class","legs4");
     		state.legsVar++;
     		console.log(state.legsVar);
-        }
-                 else
+	} 
+
+	 else
     	if (state.legsVar===4){
    	legs.setAttribute("class","legs5");
-    		state.legsVar = 0;
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+
+		if (state.legsVar===5){
+   	legs.setAttribute("class","legs6");
+    		state.legsVar++;
     		console.log(state.legsVar);
         }
+    else
+    	if (state.legsVar===6){
+   	legs.setAttribute("class","legs7");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+    	}
+    else
+    	if (state.legsVar===7){
+   	legs.setAttribute("class","legs8");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+	 else
+    	if (state.legsVar===8){
+   	legs.setAttribute("class","legs9");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+
+		 else
+    	if (state.legsVar===9){
+   	legs.setAttribute("class","legs10");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+
+	 else
+    	if (state.legsVar===10){
+   	legs.setAttribute("class","legs11");
+    		state.legsVar=0;
+    		console.log(state.legsVar);
+	} 
 
 
 }
