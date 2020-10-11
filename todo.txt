@@ -2,3 +2,14 @@
 1. selfie mode - draw current player id and last-interacted-with player ID to canvas
 2. name & avatar wipe on idle detection (extended to 10 mins)
 3. Music? idk
+
+
+Art Contributors:
+
+Dan Lance
+Ash
+Ben Bruce
+Max
+
+
+

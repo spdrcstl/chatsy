@@ -29,7 +29,7 @@ html,body {
     flex-direction: row;
   width:100%;
   background-color: #e99fe4;
-  
+  justify-content: space-around;
   
 }
       
@@ -382,7 +382,7 @@ width:200px;
    background-image: url(assets/tgmarms1.png);
 }
 
-.armso10 {
+.arms10 {
 position:absolute;
 width:200px;
   height: 200px;
@@ -10077,10 +10077,11 @@ addDeferredDialogTag('dialog', editDialog);
     <div id="containertop">
       <div id="avatar" style="background-color:grey" >
       		<div id="background" class="background">
-      			<div id="avHead" class="dressup"></div>
+      		  <div id="avLegs" class="dressup"></div>
             <div id="avTorso" class="dressup"></div>
             <div id="avArms" class="dressup"></div>
-            <div id="avLegs" class="dressup"></div>
+            <div id="avHead" class="dressup"></div>
+          
             
       		</div>
       	
@@ -10378,7 +10379,7 @@ function nextHead()
     		state.headVar++;
     		console.log(state.headVar);
 	} 
-
+else
 		if (state.headVar===5){
    	head.setAttribute("class","head6");
     		state.headVar++;
@@ -10455,7 +10456,7 @@ function nextTorso()
     		state.torsoVar++;
     		console.log(state.torsoVar);
 	} 
-
+else
 		if (state.torsoVar===5){
    	torso.setAttribute("class","torso6");
     		state.torsoVar++;
@@ -10534,7 +10535,7 @@ function nextArms()
     		state.armsVar++;
     		console.log(state.armsVar);
 	} 
-
+else
 		if (state.armsVar===5){
    	arms.setAttribute("class","arms6");
     		state.armsVar++;
@@ -10593,7 +10594,12 @@ function nextLegs()
     		console.log(state.legsVar);
         }
     else
-
+if (state.legsVar===2){
+   	legs.setAttribute("class","legs3");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+        }
+    else
     	if (state.legsVar===3){
    	legs.setAttribute("class","legs4");
     		state.legsVar++;
@@ -10606,7 +10612,7 @@ function nextLegs()
     		state.legsVar++;
     		console.log(state.legsVar);
 	} 
-
+else
 		if (state.legsVar===5){
    	legs.setAttribute("class","legs6");
     		state.legsVar++;
