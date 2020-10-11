@@ -241,6 +241,48 @@ width:200px;
   height: 200px;
    background-image: url(assets/tgmhead3.png);
 }
+
+.head12 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/benhead2.png);
+}
+
+.head13 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/benhead4.png);
+}
+
+.head14 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuihead1.png);
+}
+
+.head15 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuihead2.png);
+}
+
+.head16 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuihead3.png);
+}
+
+.head17 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/rosehead1.png);
+}
       
       .torso1 {
 position:absolute;
@@ -318,9 +360,44 @@ width:200px;
   height: 200px;
    background-image: url(assets/tgmtorso3.png);
 }
+
+.torso12 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/bentorso2.png);
+}
+
+.torso13 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuitorso1.png);
+}
+
+.torso14 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuitorso2.png);
+}
+
+.torso15 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuitorso3.png);
+}
+
+.torso16 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/rosetorso1.png);
+}
         
      .arms1 {
-position:absolute;
+position:absoluOSte;
 width:200px;
   height: 200px;
    background-image: url(assets/arms1.png);
@@ -394,6 +471,48 @@ position:absolute;
 width:200px;
   height: 200px;
    background-image: url(assets/tgmarms3.png);
+}
+
+.arms12 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/benarms2.png);
+}
+
+.arms13 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/benarms4.png);
+}
+
+.arms14 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuiarms1.png);
+}
+
+.arms15 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuiarms2.png);
+}
+
+.arms16 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuiarms3.png);
+}
+
+.arms17 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/rosearms1.png);
 }
 
        .legs1 {
@@ -474,6 +593,49 @@ width:200px;
   height: 200px;
    background-image: url(assets/tgmlegs3.png);
 }
+
+.legs12 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/benlegs2.png);
+}
+
+.legs13 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/benlegs4.png);
+}
+
+.legs14 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuilegs1.png);
+}
+
+.legs15 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuilegs2.png);
+}
+
+.legs16 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/enuilegs3.png);
+}
+
+.legs17 {
+position:absolute;
+width:200px;
+  height: 200px;
+   background-image: url(assets/roselegs1.png);
+}
+
       
       .name {
         border: 0; 
@@ -10414,8 +10576,45 @@ else
 	 else
     	if (state.headVar===10){
    	head.setAttribute("class","head11");
-    		state.headVar=0;
+    		state.headVar++;
     		console.log(state.headVar);
+	} 
+	else
+    	if (state.headVar===11){
+   	head.setAttribute("class","head12");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+	 else
+    	if (state.headVar===12){
+   	head.setAttribute("class","head13");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+	 else
+    	if (state.headVar===13){
+   	head.setAttribute("class","head14");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+	 else
+    	if (state.headVar===14){
+   	head.setAttribute("class","head15");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+	 else
+    	if (state.headVar===15){
+   	head.setAttribute("class","head16");
+    		state.headVar++;
+    		console.log(state.headVar);
+	} 
+	 else
+    	if (state.headVar===16){
+   	head.setAttribute("class","head17");
+    		state.headVar=0;
+    		console.log(state.armsVar);
+	
 	} 
 
 }
@@ -10449,14 +10648,13 @@ function nextTorso()
     		state.torsoVar++;
     		console.log(state.torsoVar);
 	} 
-
 	 else
     	if (state.torsoVar===4){
    	torso.setAttribute("class","torso5");
     		state.torsoVar++;
     		console.log(state.torsoVar);
 	} 
-else
+	else
 		if (state.torsoVar===5){
    	torso.setAttribute("class","torso6");
     		state.torsoVar++;
@@ -10491,6 +10689,36 @@ else
 	 else
     	if (state.torsoVar===10){
    	torso.setAttribute("class","torso11");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+	 else
+    	if (state.torsoVar===11){
+   	torso.setAttribute("class","torso12");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+	 else
+    	if (state.torsoVar===12){
+   	torso.setAttribute("class","torso13");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+	 else
+    	if (state.torsoVar===13){
+   	torso.setAttribute("class","torso14");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+	 else
+    	if (state.torsoVar===14){
+   	torso.setAttribute("class","torso15");
+    		state.torsoVar++;
+    		console.log(state.torsoVar);
+	} 
+	 else
+    	if (state.torsoVar===15){
+   	torso.setAttribute("class","torso16");
     		state.torsoVar=0;
     		console.log(state.torsoVar);
 	} 
@@ -10570,8 +10798,45 @@ else
 	 else
     	if (state.armsVar===10){
    	arms.setAttribute("class","arms11");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+	 else
+    	if (state.armsVar===11){
+   	arms.setAttribute("class","arms12");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+	 else
+    	if (state.armsVar===12){
+   	arms.setAttribute("class","arms13");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+	 else
+    	if (state.armsVar===13){
+   	arms.setAttribute("class","arms14");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+	 else
+    	if (state.armsVar===14){
+   	arms.setAttribute("class","arms15");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+	 else
+    	if (state.armsVar===15){
+   	arms.setAttribute("class","arms16");
+    		state.armsVar++;
+    		console.log(state.armsVar);
+	} 
+	 else
+    	if (state.armsVar===16){
+   	arms.setAttribute("class","arms17");
     		state.armsVar=0;
     		console.log(state.armsVar);
+	
 	} 
 
 }
@@ -10647,8 +10912,45 @@ else
 	 else
     	if (state.legsVar===10){
    	legs.setAttribute("class","legs11");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+	 else
+    	if (state.legsVar===11){
+   	legs.setAttribute("class","legs12");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+	 else
+    	if (state.legsVar===12){
+   	legs.setAttribute("class","legs13");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+	 else
+    	if (state.legsVar===13){
+   	legs.setAttribute("class","legs14");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+	 else
+    	if (state.legsVar===14){
+   	legs.setAttribute("class","legs15");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+	 else
+    	if (state.legsVar===15){
+   	legs.setAttribute("class","legs16");
+    		state.legsVar++;
+    		console.log(state.legsVar);
+	} 
+	 else
+    	if (state.legsVar===16){
+   	legs.setAttribute("class","legs17");
     		state.legsVar=0;
     		console.log(state.legsVar);
+	
 	} 
 
 
